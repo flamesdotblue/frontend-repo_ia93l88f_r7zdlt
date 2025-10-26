@@ -1,14 +1,6 @@
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 
 export default function Contact() {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const data = Object.fromEntries(new FormData(e.currentTarget).entries());
-    console.log("Form submitted:", data);
-    alert("Thank you! We'll get in touch soon.");
-    e.currentTarget.reset();
-  };
-
   return (
     <section id="contact" className="relative py-20">
       <div className="absolute inset-0 bg-gradient-to-b from-white via-cyan-50/40 to-white pointer-events-none" />
@@ -60,10 +52,15 @@ export default function Contact() {
           </div>
 
           <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-4">
+            {/* Using formsubmit.co to send inquiries directly to email */}
+            <form action="https://formsubmit.co/info@suryatravels.com" method="POST" className="grid grid-cols-1 gap-4">
+              {/* FormSubmit options */}
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_subject" value="New enquiry from Surya Travels website" />
+
               <div>
                 <label className="block text-sm font-medium text-slate-700">Full Name</label>
-                <input name="fullName" required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50" />
+                <input name="name" required className="mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600/50" />
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
